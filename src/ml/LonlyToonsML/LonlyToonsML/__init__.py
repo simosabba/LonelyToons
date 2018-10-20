@@ -9,7 +9,7 @@ app = Flask(__name__)
 api = Api(app)
 
 @api.route('/analyze')
-class HelloWorld(Resource):
+class Analyers(Resource):
     def get(self):
         return {'status': 'sad'}
 

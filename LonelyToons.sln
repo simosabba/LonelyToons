@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ml", "ml", "{E99AEFE1-D6AC-
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LonlyToonsML", "src\ml\LonlyToonsML\LonlyToonsML.pyproj", "{5711AE42-5936-4E18-B019-B336562BC19C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "swagger", "swagger", "{1E58C88A-0785-4D7B-A152-21AEEADD990F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
