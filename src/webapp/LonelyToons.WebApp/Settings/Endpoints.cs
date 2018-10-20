@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LonelyToons.WebApp.Settings
 {
-    public class Endpoints
+    public class Endpoints : Dictionary<string, string>
     {
     }
 }
