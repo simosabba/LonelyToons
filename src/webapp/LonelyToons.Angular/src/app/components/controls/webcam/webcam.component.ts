@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-webcam',
   templateUrl: './webcam.component.html',
   styleUrls: ['./webcam.component.css']
 })
-export class WebcamComponent implements OnInit {
+export class WebcamComponent implements OnInit, AfterViewInit {
 
   @ViewChild('video')
   public video: ElementRef;

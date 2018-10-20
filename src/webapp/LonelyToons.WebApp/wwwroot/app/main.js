@@ -150,12 +150,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/layout/loader/loader.component */ "./src/app/components/layout/loader/loader.component.ts");
 /* harmony import */ var _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/home/home.component */ "./src/app/components/pages/home/home.component.ts");
 /* harmony import */ var _components_controls_webcam_webcam_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/controls/webcam/webcam.component */ "./src/app/components/controls/webcam/webcam.component.ts");
+/* harmony import */ var _components_outputs_joke_joke_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/outputs/joke/joke.component */ "./src/app/components/outputs/joke/joke.component.ts");
+/* harmony import */ var _components_outputs_memory_memory_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/outputs/memory/memory.component */ "./src/app/components/outputs/memory/memory.component.ts");
+/* harmony import */ var _components_outputs_video_video_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/outputs/video/video.component */ "./src/app/components/outputs/video/video.component.ts");
+/* harmony import */ var _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/outputs/karaoke/karaoke.component */ "./src/app/components/outputs/karaoke/karaoke.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -176,7 +184,11 @@ var AppModule = /** @class */ (function () {
                 _components_layout_header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"],
                 _components_layout_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__["LoaderComponent"],
                 _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-                _components_controls_webcam_webcam_component__WEBPACK_IMPORTED_MODULE_8__["WebcamComponent"]
+                _components_controls_webcam_webcam_component__WEBPACK_IMPORTED_MODULE_8__["WebcamComponent"],
+                _components_outputs_joke_joke_component__WEBPACK_IMPORTED_MODULE_9__["JokeComponent"],
+                _components_outputs_memory_memory_component__WEBPACK_IMPORTED_MODULE_10__["MemoryComponent"],
+                _components_outputs_video_video_component__WEBPACK_IMPORTED_MODULE_11__["VideoComponent"],
+                _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__["KaraokeComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -211,7 +223,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"640\" height=\"480\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas class=\"my-2\" #canvas id=\"canvas\" width=\"640\" height=\"480\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
+module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"340\" height=\"240\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"340\" height=\"240\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
 
 /***/ }),
 
@@ -461,6 +473,258 @@ var LoaderComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], LoaderComponent);
     return LoaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/joke/joke.component.css":
+/*!************************************************************!*\
+  !*** ./src/app/components/outputs/joke/joke.component.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/joke/joke.component.html":
+/*!*************************************************************!*\
+  !*** ./src/app/components/outputs/joke/joke.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  joke works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/joke/joke.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/components/outputs/joke/joke.component.ts ***!
+  \***********************************************************/
+/*! exports provided: JokeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JokeComponent", function() { return JokeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var JokeComponent = /** @class */ (function () {
+    function JokeComponent() {
+    }
+    JokeComponent.prototype.ngOnInit = function () {
+    };
+    JokeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-joke',
+            template: __webpack_require__(/*! ./joke.component.html */ "./src/app/components/outputs/joke/joke.component.html"),
+            styles: [__webpack_require__(/*! ./joke.component.css */ "./src/app/components/outputs/joke/joke.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], JokeComponent);
+    return JokeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/karaoke/karaoke.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/components/outputs/karaoke/karaoke.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/karaoke/karaoke.component.html":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/outputs/karaoke/karaoke.component.html ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  karaoke works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/karaoke/karaoke.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/outputs/karaoke/karaoke.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: KaraokeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KaraokeComponent", function() { return KaraokeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var KaraokeComponent = /** @class */ (function () {
+    function KaraokeComponent() {
+    }
+    KaraokeComponent.prototype.ngOnInit = function () {
+    };
+    KaraokeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-karaoke',
+            template: __webpack_require__(/*! ./karaoke.component.html */ "./src/app/components/outputs/karaoke/karaoke.component.html"),
+            styles: [__webpack_require__(/*! ./karaoke.component.css */ "./src/app/components/outputs/karaoke/karaoke.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], KaraokeComponent);
+    return KaraokeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/memory/memory.component.css":
+/*!****************************************************************!*\
+  !*** ./src/app/components/outputs/memory/memory.component.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/memory/memory.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/outputs/memory/memory.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  memory works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/memory/memory.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/outputs/memory/memory.component.ts ***!
+  \***************************************************************/
+/*! exports provided: MemoryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryComponent", function() { return MemoryComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MemoryComponent = /** @class */ (function () {
+    function MemoryComponent() {
+    }
+    MemoryComponent.prototype.ngOnInit = function () {
+    };
+    MemoryComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-memory',
+            template: __webpack_require__(/*! ./memory.component.html */ "./src/app/components/outputs/memory/memory.component.html"),
+            styles: [__webpack_require__(/*! ./memory.component.css */ "./src/app/components/outputs/memory/memory.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], MemoryComponent);
+    return MemoryComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/video/video.component.css":
+/*!**************************************************************!*\
+  !*** ./src/app/components/outputs/video/video.component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/video/video.component.html":
+/*!***************************************************************!*\
+  !*** ./src/app/components/outputs/video/video.component.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  video works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/video/video.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/components/outputs/video/video.component.ts ***!
+  \*************************************************************/
+/*! exports provided: VideoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoComponent", function() { return VideoComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var VideoComponent = /** @class */ (function () {
+    function VideoComponent() {
+    }
+    VideoComponent.prototype.ngOnInit = function () {
+    };
+    VideoComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-video',
+            template: __webpack_require__(/*! ./video.component.html */ "./src/app/components/outputs/video/video.component.html"),
+            styles: [__webpack_require__(/*! ./video.component.css */ "./src/app/components/outputs/video/video.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], VideoComponent);
+    return VideoComponent;
 }());
 
 

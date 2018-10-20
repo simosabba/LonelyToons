@@ -8,6 +8,10 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { LoaderComponent } from './components/layout/loader/loader.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { WebcamComponent } from './components/controls/webcam/webcam.component';
+import { JokeComponent } from './components/outputs/joke/joke.component';
+import { MemoryComponent } from './components/outputs/memory/memory.component';
+import { VideoComponent } from './components/outputs/video/video.component';
+import { KaraokeComponent } from './components/outputs/karaoke/karaoke.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { WebcamComponent } from './components/controls/webcam/webcam.component';
     HeaderComponent,
     LoaderComponent,
     HomeComponent,
-    WebcamComponent
+    WebcamComponent,
+    JokeComponent,
+    MemoryComponent,
+    VideoComponent,
+    KaraokeComponent
   ],
   imports: [
     BrowserModule,
