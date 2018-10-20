@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { LoaderComponent } from './components/layout/loader/loader.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { WebcamComponent } from './components/controls/webcam/webcam.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    LoaderComponent
+    LoaderComponent,
+    HomeComponent,
+    WebcamComponent
   ],
   imports: [
     BrowserModule,

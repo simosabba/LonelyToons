@@ -35,6 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pages/home/home.component */ "./src/app/components/pages/home/home.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -43,7 +44,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
-var routes = [];
+
+var routes = [
+    { path: '', component: _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] }
+];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
@@ -108,7 +112,7 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         setTimeout(function () {
             _this.isAppReady = true;
-        }, 2000);
+        }, 1500);
     };
     AppComponent.prototype.isLoading = function () {
         return !this.isAppReady;
@@ -144,12 +148,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/layout/footer/footer.component */ "./src/app/components/layout/footer/footer.component.ts");
 /* harmony import */ var _components_layout_header_header_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/layout/header/header.component */ "./src/app/components/layout/header/header.component.ts");
 /* harmony import */ var _components_layout_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/layout/loader/loader.component */ "./src/app/components/layout/loader/loader.component.ts");
+/* harmony import */ var _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/home/home.component */ "./src/app/components/pages/home/home.component.ts");
+/* harmony import */ var _components_controls_webcam_webcam_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/controls/webcam/webcam.component */ "./src/app/components/controls/webcam/webcam.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -166,7 +174,9 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                 _components_layout_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__["FooterComponent"],
                 _components_layout_header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"],
-                _components_layout_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__["LoaderComponent"]
+                _components_layout_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__["LoaderComponent"],
+                _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
+                _components_controls_webcam_webcam_component__WEBPACK_IMPORTED_MODULE_8__["WebcamComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -177,6 +187,90 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/controls/webcam/webcam.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/controls/webcam/webcam.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/controls/webcam/webcam.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/components/controls/webcam/webcam.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"640\" height=\"480\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas class=\"my-2\" #canvas id=\"canvas\" width=\"640\" height=\"480\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/controls/webcam/webcam.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/components/controls/webcam/webcam.component.ts ***!
+  \****************************************************************/
+/*! exports provided: WebcamComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebcamComponent", function() { return WebcamComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var WebcamComponent = /** @class */ (function () {
+    function WebcamComponent() {
+        this.captures = [];
+    }
+    WebcamComponent.prototype.ngOnInit = function () { };
+    WebcamComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                _this.video.nativeElement.src = window.URL.createObjectURL(stream);
+                _this.video.nativeElement.play();
+            });
+        }
+    };
+    WebcamComponent.prototype.capture = function () {
+        var context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 640, 480);
+        this.captures.push(this.canvas.nativeElement.toDataURL('image/png'));
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('video'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], WebcamComponent.prototype, "video", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('canvas'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], WebcamComponent.prototype, "canvas", void 0);
+    WebcamComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-webcam',
+            template: __webpack_require__(/*! ./webcam.component.html */ "./src/app/components/controls/webcam/webcam.component.html"),
+            styles: [__webpack_require__(/*! ./webcam.component.css */ "./src/app/components/controls/webcam/webcam.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], WebcamComponent);
+    return WebcamComponent;
 }());
 
 
@@ -367,6 +461,69 @@ var LoaderComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], LoaderComponent);
     return LoaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/pages/home/home.component.css":
+/*!**********************************************************!*\
+  !*** ./src/app/components/pages/home/home.component.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/pages/home/home.component.html":
+/*!***********************************************************!*\
+  !*** ./src/app/components/pages/home/home.component.html ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <app-webcam class=\"py-3\"></app-webcam>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/pages/home/home.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/components/pages/home/home.component.ts ***!
+  \*********************************************************/
+/*! exports provided: HomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-home',
+            template: __webpack_require__(/*! ./home.component.html */ "./src/app/components/pages/home/home.component.html"),
+            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/components/pages/home/home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
 }());
 
 
