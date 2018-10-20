@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LonelyToons.WebApp.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -53,6 +54,11 @@ namespace LonelyToons.WebApp
             app.UseCookiePolicy();
 
             app.UseMvc();
+
+            app.UseAngularAppMiddleware(x =>
+            {
+                x.InlineSettings = new { endpoints = Configuration.GetSection("Endpoints").Get<Endpoints>() };
+            });
         }
     }
 }

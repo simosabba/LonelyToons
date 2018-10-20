@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.9" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Alaska.Foundation.Core">
+      <HintPath>..\..\..\libs\Alaska.Foundation.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Alaska.Foundation.Web">
+      <HintPath>..\..\..\libs\Alaska.Foundation.Web.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
