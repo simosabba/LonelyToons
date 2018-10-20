@@ -1,0 +1,10 @@
+﻿[
+  {
+    "key": "passwordResetForm_email",
+    "value": "Email"
+  },
+  {
+    "key": "passwordResetForm_reset_pwd_button",
+    "value": "Invia"
+  }
+]

@@ -1,0 +1,27 @@
+﻿[
+  {
+    "key": "my-groups-title",
+    "value": "I Miei Gruppi"
+  },
+  {
+    "key": "new-group-title",
+    "value": "Nuovo Gruppo"
+  },
+  {
+    "key": "userGroups_newGroupName",
+    "value": "Nome"
+  },
+  {
+    "key": "userGroups_newGroupDescription",
+    "value": "Descrizione"
+  },
+  {
+    "key": "userGroups_createGroup",
+    "value": "Crea"
+  },
+  {
+    "key": "new_group",
+    "value": "Nuovo"
+  }
+]
+  

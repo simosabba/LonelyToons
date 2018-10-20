@@ -1,0 +1,14 @@
+﻿[
+  {
+    "key": "userProfileComponent_profileTab",
+    "value": "Profilo"
+  },
+  {
+    "key": "userProfileComponent_statisticsTab",
+    "value": "Statistiche"
+  },
+  {
+    "key": "userProfileComponent_goalsTab",
+    "value": "Goal"
+  }
+]

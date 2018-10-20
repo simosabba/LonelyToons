@@ -1,0 +1,30 @@
+﻿[
+  {
+    "key": "dates_friday",
+    "value": "Venerdì"
+  },
+  {
+    "key": "dates_monday",
+    "value": "Lunedì"
+  },
+  {
+    "key": "dates_saturday",
+    "value": "Sabato"
+  },
+  {
+    "key": "dates_sunday",
+    "value": "Domenica"
+  },
+  {
+    "key": "dates_thursday",
+    "value": "Giovedì"
+  },
+  {
+    "key": "dates_tuesday",
+    "value": "Martedì"
+  },
+  {
+    "key": "dates_wednesday",
+    "value": "Mercoledì"
+  }
+]

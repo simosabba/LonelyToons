@@ -1,0 +1,14 @@
+﻿[
+  {
+    "key": "geo_address",
+    "value": "Indirizzo"
+  },
+  {
+    "key": "geo_street",
+    "value": "Via"
+  },
+  {
+    "key": "geo_city",
+    "value": "Comune"
+  }
+]

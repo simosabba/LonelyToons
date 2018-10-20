@@ -1,0 +1,18 @@
+﻿[
+  {
+    "key": "action_save",
+    "value": "Salva"
+  },
+  {
+    "key": "message_invalidField",
+    "value": "Campo non valido"
+  },
+  {
+    "key": "message_noResultsFound",
+    "value": "Nessun risultato trovato"
+  },
+  {
+    "key": "message_requiredField",
+    "value": "Campo obbligatorio"
+  }
+]

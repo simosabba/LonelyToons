@@ -1,0 +1,30 @@
+﻿[
+  {
+    "key": "menu_login",
+    "value": "Login"
+  },
+  {
+    "key": "menu_logout",
+    "value": "Logout"
+  },
+  {
+    "key": "menu_register",
+    "value": "Registrati"
+  },
+  {
+    "key": "menu_profile",
+    "value": "Profilo"
+  },
+  {
+    "key": "menu_account",
+    "value": "Account"
+  },
+  {
+    "key": "menu_my_books",
+    "value": "I Miei Libri"
+  },
+  {
+    "key": "menu_my_groups",
+    "value": "I Miei Gruppi"
+  }
+]

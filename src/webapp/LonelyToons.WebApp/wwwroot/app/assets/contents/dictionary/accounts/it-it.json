@@ -1,0 +1,26 @@
+﻿[
+  {
+    "key": "user_address",
+    "value": "Indirizzo"
+  },
+  {
+    "key": "user_birthday",
+    "value": "Data di nascita"
+  },
+  {
+    "key": "user_email",
+    "value": "Email"
+  },
+  {
+    "key": "user_name",
+    "value": "Nome"
+  },
+  {
+    "key": "user_password",
+    "value": "Password"
+  },
+  {
+    "key": "user_surname",
+    "value": "Cognome"
+  }
+]

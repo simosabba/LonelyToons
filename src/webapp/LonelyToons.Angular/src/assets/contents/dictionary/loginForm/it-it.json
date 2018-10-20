@@ -1,0 +1,18 @@
+﻿[
+  {
+    "key": "loginForm_forgotPassword",
+    "value": "Password dimenticata?"
+  },
+  {
+    "key": "loginForm_register",
+    "value": "Registrati"
+  },
+  {
+    "key": "loginForm_loginButton",
+    "value": "Login"
+  },
+  {
+    "key": "loginForm_badCredentials",
+    "value": "Credenziali non valide"
+  }
+]

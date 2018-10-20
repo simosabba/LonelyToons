@@ -1,0 +1,58 @@
+﻿[
+  {
+    "key": "registrationForm_name",
+    "value": "Nome"
+  },
+  {
+    "key": "registrationForm_name_required",
+    "value": "Nome obbligatorio"
+  },
+  {
+    "key": "registrationForm_surname",
+    "value": "Cognome"
+  },
+  {
+    "key": "registrationForm_surname_required",
+    "value": "Cognome obbligatorio"
+  },
+  {
+    "key": "registrationForm_birthday",
+    "value": "Data di nascita"
+  },
+  {
+    "key": "registrationForm_birthday_required",
+    "value": "Campo obbligatorio"
+  },
+  {
+    "key": "registrationForm_email",
+    "value": "Email"
+  },
+  {
+    "key": "registrationForm_email_required",
+    "value": "Email obbligatoria"
+  },
+  {
+    "key": "registrationForm_email_invalid",
+    "value": "Email non valida"
+  },
+  {
+    "key": "registrationForm_password",
+    "value": "Password"
+  },
+  {
+    "key": "registrationForm_password_invalid",
+    "value": "Password non valida. Inserire almeno un carattere alfanumerico e una lettera maiuscola"
+  },
+  {
+    "key": "registrationForm_password_required",
+    "value": "Password obbligatoria"
+  },
+  {
+    "key": "registrationForm_registerButton",
+    "value": "Registrati"
+  },
+  {
+    "key": "registrationForm_pending_email_confirmation",
+    "value": "Verifica il tuo indirizzo email per finalizzare la registrazione"
+  }
+]

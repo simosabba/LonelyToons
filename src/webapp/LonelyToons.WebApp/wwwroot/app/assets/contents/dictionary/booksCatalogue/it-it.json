@@ -1,0 +1,38 @@
+﻿[
+  {
+    "key": "catalogue_books_editor",
+    "value": "I Miei Libri"
+  },
+  {
+    "key": "catalogue_add_book",
+    "value": "Aggiungi Libro"
+  },
+  {
+    "key": "no_books",
+    "value": "Nessun libro trovato"
+  },
+  {
+    "key": "add",
+    "value": "Aggiungi"
+  },
+  {
+    "key": "remove",
+    "value": "Rimuovi"
+  },
+  {
+    "key": "add_book",
+    "value": "Aggiungi Nuovo"
+  },
+  {
+    "key": "edit_book",
+    "value": "Modifica"
+  },
+  {
+    "key": "delete_book",
+    "value": "Elimina"
+  },
+  {
+    "key": "catalogue_no_user_books",
+    "value": "Non hai caricato nessun libro"
+  }
+]
