@@ -154,12 +154,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_outputs_memory_memory_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/outputs/memory/memory.component */ "./src/app/components/outputs/memory/memory.component.ts");
 /* harmony import */ var _components_outputs_video_video_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/outputs/video/video.component */ "./src/app/components/outputs/video/video.component.ts");
 /* harmony import */ var _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/outputs/karaoke/karaoke.component */ "./src/app/components/outputs/karaoke/karaoke.component.ts");
+/* harmony import */ var _components_controls_my_assistant_my_assistant_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/controls/my-assistant/my-assistant.component */ "./src/app/components/controls/my-assistant/my-assistant.component.ts");
+/* harmony import */ var _components_controls_assistant_loader_assistant_loader_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/controls/assistant-loader/assistant-loader.component */ "./src/app/components/controls/assistant-loader/assistant-loader.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -188,7 +192,9 @@ var AppModule = /** @class */ (function () {
                 _components_outputs_joke_joke_component__WEBPACK_IMPORTED_MODULE_9__["JokeComponent"],
                 _components_outputs_memory_memory_component__WEBPACK_IMPORTED_MODULE_10__["MemoryComponent"],
                 _components_outputs_video_video_component__WEBPACK_IMPORTED_MODULE_11__["VideoComponent"],
-                _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__["KaraokeComponent"]
+                _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__["KaraokeComponent"],
+                _components_controls_my_assistant_my_assistant_component__WEBPACK_IMPORTED_MODULE_13__["MyAssistantComponent"],
+                _components_controls_assistant_loader_assistant_loader_component__WEBPACK_IMPORTED_MODULE_14__["AssistantLoaderComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -199,6 +205,132 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/controls/assistant-loader/assistant-loader.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/components/controls/assistant-loader/assistant-loader.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"loader-container vertical-centered-box\">\n    <div class=\"content\">\n      <div class=\"loader-circle\"></div>\n      <div class=\"loader-line-mask one\">\n        <div class=\"loader-line\"></div>\n      </div>\n      <div class=\"loader-line-mask two\">\n        <div class=\"loader-line\"></div>\n      </div>\n      <div class=\"loader-line-mask three\">\n        <div class=\"loader-line\"></div>\n      </div>\n      <div class=\"loader-line-mask four\">\n        <div class=\"loader-line\"></div>\n      </div>\n    </div>\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/components/controls/assistant-loader/assistant-loader.component.scss":
+/*!**************************************************************************************!*\
+  !*** ./src/app/components/controls/assistant-loader/assistant-loader.component.scss ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "body {\n  -webkit-user-select: none;\n  overflow: hidden; }\n\nbody .vertical-centered-box {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\nbody .vertical-centered-box:after {\n  content: '';\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n  margin-right: -0.25em; }\n\nbody .vertical-centered-box .content {\n  box-sizing: border-box;\n  -webkit-animation: fadein 1s 1.5s linear forwards;\n  animation: fadein 1s 1.5s linear forwards;\n  display: inline-block;\n  vertical-align: middle;\n  text-align: left;\n  font-size: 0;\n  opacity: 0; }\n\nbody {\n  background: #fff; }\n\n.loader-line-mask {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  width: 50px;\n  height: 100px;\n  margin-left: -50px;\n  margin-top: -50px;\n  overflow: hidden;\n  -webkit-transform-origin: 50px 50px;\n  transform-origin: 50px 50px;\n  -webkit-mask-image: -webkit-linear-gradient(top, #000000, rgba(0, 0, 0, 0));\n  mix-blend-mode: hard-light;\n  opacity: 0.8; }\n\n.loader-line-mask .loader-line {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%; }\n\n.loader-line-mask.one {\n  -webkit-animation: rotate 2s infinite linear;\n  animation: rotate 2s infinite linear; }\n\n.loader-line-mask.one .loader-line {\n  box-shadow: inset 0 0 0 8px #77C170; }\n\n.loader-line-mask.two {\n  -webkit-animation: rotate 1.8s 0.5s infinite linear;\n  animation: rotate 1.8s 0.5s infinite linear; }\n\n.loader-line-mask.two .loader-line {\n  box-shadow: inset 0 0 0 8px #F25F5C; }\n\n.loader-line-mask.three {\n  -webkit-animation: rotate 2s 1s infinite linear;\n  animation: rotate 2s 1s infinite linear; }\n\n.loader-line-mask.three .loader-line {\n  box-shadow: inset 0 0 0 8px #FFE066; }\n\n.loader-line-mask.four {\n  -webkit-animation: rotate 1.8s 1.4s infinite linear;\n  animation: rotate 1.8s 1.4s infinite linear; }\n\n.loader-line-mask.four .loader-line {\n  box-shadow: inset 0 0 0 8px #247BA0; }\n\nlesshat-selector {\n  -lh-property: 0; }\n\n@-webkit-keyframes rotate {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes rotate {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n[not-existing] {\n  zoom: 1; }\n\nlesshat-selector {\n  -lh-property: 0; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n[not-existing] {\n  zoom: 1; }\n\n.loader-container {\n  min-height: 150px; }\n"
+
+/***/ }),
+
+/***/ "./src/app/components/controls/assistant-loader/assistant-loader.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/components/controls/assistant-loader/assistant-loader.component.ts ***!
+  \************************************************************************************/
+/*! exports provided: AssistantLoaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AssistantLoaderComponent", function() { return AssistantLoaderComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AssistantLoaderComponent = /** @class */ (function () {
+    function AssistantLoaderComponent() {
+    }
+    AssistantLoaderComponent.prototype.ngOnInit = function () {
+    };
+    AssistantLoaderComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-assistant-loader',
+            template: __webpack_require__(/*! ./assistant-loader.component.html */ "./src/app/components/controls/assistant-loader/assistant-loader.component.html"),
+            styles: [__webpack_require__(/*! ./assistant-loader.component.scss */ "./src/app/components/controls/assistant-loader/assistant-loader.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AssistantLoaderComponent);
+    return AssistantLoaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/controls/my-assistant/my-assistant.component.css":
+/*!*****************************************************************************!*\
+  !*** ./src/app/components/controls/my-assistant/my-assistant.component.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/controls/my-assistant/my-assistant.component.html":
+/*!******************************************************************************!*\
+  !*** ./src/app/components/controls/my-assistant/my-assistant.component.html ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div>\n  <app-assistant-loader></app-assistant-loader>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/controls/my-assistant/my-assistant.component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/components/controls/my-assistant/my-assistant.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: MyAssistantComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyAssistantComponent", function() { return MyAssistantComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MyAssistantComponent = /** @class */ (function () {
+    function MyAssistantComponent() {
+    }
+    MyAssistantComponent.prototype.ngOnInit = function () {
+    };
+    MyAssistantComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-my-assistant',
+            template: __webpack_require__(/*! ./my-assistant.component.html */ "./src/app/components/controls/my-assistant/my-assistant.component.html"),
+            styles: [__webpack_require__(/*! ./my-assistant.component.css */ "./src/app/components/controls/my-assistant/my-assistant.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], MyAssistantComponent);
+    return MyAssistantComponent;
 }());
 
 
@@ -223,7 +355,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card p-4\" id=\"app\">\n  <div><video #video id=\"video\" width=\"340\" height=\"240\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"340\" height=\"240\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
+module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"100%\" height=\"100%\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"100%\" height=\"100%\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
 
 /***/ }),
 
@@ -307,7 +439,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    <!-- Footer -->\n    <footer class=\"py-3 bg-dark\">\n      <div class=\"container\">\n        <p class=\"m-0 text-center text-white\">Copyright &copy; Cyli {{year}}</p>\n      </div>\n    </footer>\n    "
+module.exports = "    <!-- Footer -->\n    <footer class=\"py-3 bg-light\">\n      <div class=\"container\">\n        <p class=\"m-0 text-center\">Copyright &copy; Cyli {{year}}</p>\n      </div>\n    </footer>\n    "
 
 /***/ }),
 
@@ -371,7 +503,7 @@ module.exports = ".nav-link,\r\n.dropdown-item {\r\n    cursor: pointer;\r\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\" id=\"mainNav\">\n  <div class=\"container\">\n    <a class=\"navbar-brand js-scroll-trigger\" routerLink=\"/\">Loonly Toons</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n        \n      </ul>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\" id=\"mainNav\">\n  <div class=\"container\">\n    <a class=\"navbar-brand js-scroll-trigger\" routerLink=\"/\">Loonly Toons</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n        \n      </ul>\n    </div>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -749,7 +881,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <app-webcam class=\"py-3\"></app-webcam>\n  </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4\">\n      <div class=\"card p-4 my-2\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n  </div>\n  <div class=\"row justify-content-center\">\n      <div class=\"col-6\">\n        <div class=\"card p-4 my-2\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n    </div>\n</div>"
 
 /***/ }),
 

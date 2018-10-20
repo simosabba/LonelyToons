@@ -12,6 +12,8 @@ import { JokeComponent } from './components/outputs/joke/joke.component';
 import { MemoryComponent } from './components/outputs/memory/memory.component';
 import { VideoComponent } from './components/outputs/video/video.component';
 import { KaraokeComponent } from './components/outputs/karaoke/karaoke.component';
+import { MyAssistantComponent } from './components/controls/my-assistant/my-assistant.component';
+import { AssistantLoaderComponent } from './components/controls/assistant-loader/assistant-loader.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { KaraokeComponent } from './components/outputs/karaoke/karaoke.component
     JokeComponent,
     MemoryComponent,
     VideoComponent,
-    KaraokeComponent
+    KaraokeComponent,
+    MyAssistantComponent,
+    AssistantLoaderComponent
   ],
   imports: [
     BrowserModule,
