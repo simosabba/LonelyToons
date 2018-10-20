@@ -71,7 +71,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
+module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n    background-image: url(/app/assets/img/background.jpg);\r\n    background-size: cover;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
 
 /***/ }),
 
@@ -223,7 +223,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"340\" height=\"240\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"340\" height=\"240\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
+module.exports = "<div class=\"card p-4\" id=\"app\">\n  <div><video #video id=\"video\" width=\"340\" height=\"240\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"340\" height=\"240\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
 
 /***/ }),
 
