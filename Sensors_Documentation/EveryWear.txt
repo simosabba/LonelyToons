@@ -1,0 +1,17 @@
+#####################
+# General Description
+#####################
+EveryWear is an ambulatory system capable of collecting biometric data and statistics of the main vital parameters of the human body.
+This system is comprised of three modules: a Biometric Smartshirt, a Biometric Patch and a Space Station iPad, which is provided by Nasa.
+The Biometric Smartshirt is an intelligent t-shirt that can collect ECG data, it comprises sensors embedded in the garment fibers of the
+shirt and a Bluetooth antenna used to send real time data to the iPad together with a Lithium-Ion battery.
+Similarly, the Biometric Patch measures the body temperature and levels of physical activity. The sensor is applied on the subject chest
+or forearm using Medical Tape. The patch contains a Bluetooth antenna to communicate real time data to the iPad application and a soldered
+rechargeable lithium-ion battery.
+
+#####################
+# How could we use it
+#####################
+Since these two wearable devices with embedded sensors already come with a battery and a Bluetooth antenna, we could simply redirect their
+data to the processing unit in charge of elaborating all the signals or we could implement a rather simple system that has a Bluetooth
+transceiver (or receiver?) that receives data, elaborates it and sends it to the main Processing Unit
