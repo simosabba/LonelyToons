@@ -4,8 +4,14 @@
       <app-assistant-loader></app-assistant-loader>
   </div>
   <div *ngIf="!isLoading && isOk">
-    <h2>You look good!</h2>
-    <img class="w-100" src="/app/assets/img/happy-astronaut.jpg">
+    <div *ngIf="status === 'neutral'">
+        <h2>You look ok!</h2>
+        <img class="w-100" src="/app/assets/img/happy-astronaut.jpg">
+    </div>
+    <div *ngIf="status !== 'neutral'">
+        <h2>You look good!</h2>
+        <img class="w-100" src="/app/assets/img/happy-astronaut.jpg">
+    </div>
   </div>
   <div *ngIf="!isLoading && !isOk">
     <h2>You look bad..</h2>

@@ -13,7 +13,7 @@ export class AnalyzerService {
 
   sendImage(image: any) {
     const request = new AnalyzeRequest();
-    request.imageContent = (<string>image).split(',')[1];
+    request.imageContent = (<string>image).substr('data:image/png;base64,'.length);
     this.analyzerClient.analyze(request).subscribe((x: AnalyzeResponse) => {
       this.statusEmitter.emit(x);
     });

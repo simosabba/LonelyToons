@@ -9,6 +9,7 @@ import { AnalyzeResponse } from '../../../clients/analyzer-client.service';
 })
 export class MyAssistantComponent implements OnInit {
 
+  status: string;
   isLoading = true;
   isOk = true;
   showJoke = false;
@@ -23,6 +24,7 @@ export class MyAssistantComponent implements OnInit {
   }
 
   private processStatus(status: string) {
+    this.status = status.toLocaleLowerCase();
     switch (status.toLocaleLowerCase()) {
       case 'sad':
       case 'fear':

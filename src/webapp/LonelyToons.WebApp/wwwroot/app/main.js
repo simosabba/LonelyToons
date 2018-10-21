@@ -356,7 +356,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <h2>You look good!</h2>\n    <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
+module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <div *ngIf=\"status === 'neutral'\">\n        <h2>You look ok!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n    <div *ngIf=\"status !== 'neutral'\">\n        <h2>You look good!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -398,6 +398,7 @@ var MyAssistantComponent = /** @class */ (function () {
         });
     };
     MyAssistantComponent.prototype.processStatus = function (status) {
+        this.status = status.toLocaleLowerCase();
         switch (status.toLocaleLowerCase()) {
             case 'sad':
             case 'fear':
@@ -460,7 +461,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"100%\" height=\"100%\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"100%\" height=\"100%\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
+module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"100%\" height=\"100%\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"640\" height=\"480\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
 
 /***/ }),
 
@@ -1080,7 +1081,7 @@ var AnalyzerService = /** @class */ (function () {
     AnalyzerService.prototype.sendImage = function (image) {
         var _this = this;
         var request = new _clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__["AnalyzeRequest"]();
-        request.imageContent = image.split(',')[1];
+        request.imageContent = image.substr('data:image/png;base64,'.length);
         this.analyzerClient.analyze(request).subscribe(function (x) {
             _this.statusEmitter.emit(x);
         });
