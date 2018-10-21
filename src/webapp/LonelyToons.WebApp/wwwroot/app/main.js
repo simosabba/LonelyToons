@@ -245,7 +245,7 @@ var AnalyzerClientService = /** @class */ (function () {
         this.baseAddress = settings.endpoints.Analyzer;
     }
     AnalyzerClientService.prototype.analyze = function (request) {
-        return this.http.post(this.getAddress('analyze'), request);
+        return this.http.post(this.getAddress('analyze'), request.imageContent);
     };
     AnalyzerClientService.prototype.getAddress = function (path) {
         return this.baseAddress + path;
