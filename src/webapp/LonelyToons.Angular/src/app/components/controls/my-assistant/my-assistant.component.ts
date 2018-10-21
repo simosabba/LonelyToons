@@ -17,17 +17,18 @@ export class MyAssistantComponent implements OnInit {
   constructor(private analyzerService: AnalyzerService) { }
 
   ngOnInit() {
-    this.analyzerService.statusEmitter.subscribe((x: AnalyzeResponse) => {
+    this.analyzerService.statusEmitter.subscribe((x: string) => {
       this.processStatus(x);
     });
   }
 
-  private processStatus(response: AnalyzeResponse) {
-    switch (response.status) {
+  private processStatus(status: string) {
+    switch (status.toLocaleLowerCase()) {
       case 'sad':
+      case 'fear':
         this.helpHappyGuy();
         break;
-      case 'ok':
+      default:
         this.helpSadGuy();
         break;
     }

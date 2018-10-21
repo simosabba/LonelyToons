@@ -245,7 +245,7 @@ var AnalyzerClientService = /** @class */ (function () {
         this.baseAddress = settings.endpoints.Analyzer;
     }
     AnalyzerClientService.prototype.analyze = function (request) {
-        return this.http.post(this.getAddress('analyze'), request.imageContent);
+        return this.http.post(this.getAddress('pic'), request.imageContent);
     };
     AnalyzerClientService.prototype.getAddress = function (path) {
         return this.baseAddress + path;
@@ -397,12 +397,13 @@ var MyAssistantComponent = /** @class */ (function () {
             _this.processStatus(x);
         });
     };
-    MyAssistantComponent.prototype.processStatus = function (response) {
-        switch (response.status) {
+    MyAssistantComponent.prototype.processStatus = function (status) {
+        switch (status.toLocaleLowerCase()) {
             case 'sad':
+            case 'fear':
                 this.helpHappyGuy();
                 break;
-            case 'ok':
+            default:
                 this.helpSadGuy();
                 break;
         }

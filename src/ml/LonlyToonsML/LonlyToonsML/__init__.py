@@ -2,7 +2,7 @@
 The flask application package.
 """
 
-from flask import Flask, request
+from flask import Flask, request, Response
 from flask_restplus import Resource, Api
 from flask_cors import CORS
 
@@ -111,6 +111,9 @@ def emotion():
     plt.savefig(os.path.join('LonlyToonsML/images/results/' + img_name))
     plt.close()
 
-    return class_names[predicted]
+    ret = "{ \"status\": \"" + class_names[predicted] + "\" }"
+    return  Response(response=ret,
+        status=200,
+        mimetype="application/json")
 
 import LonlyToonsML.views

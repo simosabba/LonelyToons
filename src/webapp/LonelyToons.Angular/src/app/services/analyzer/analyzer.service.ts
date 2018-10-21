@@ -6,7 +6,7 @@ import { Injectable, Inject, EventEmitter } from '@angular/core';
 })
 export class AnalyzerService {
 
-  statusEmitter = new EventEmitter<AnalyzeResponse>();
+  statusEmitter = new EventEmitter<string>();
 
   constructor(private analyzerClient: AnalyzerClientService) {
   }
