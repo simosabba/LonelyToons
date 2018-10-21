@@ -71,7 +71,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n    background-image: url(/app/assets/img/background-sm.jpg);\r\n    background-size: cover;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
+module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100%;\r\n    background-image: url(/app/assets/img/background-sm.jpg);\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
 
 /***/ }),
 
@@ -356,7 +356,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    OK\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <app-joke></app-joke>\n  </div>\n</div>"
+module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    OK\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -388,6 +388,8 @@ var MyAssistantComponent = /** @class */ (function () {
         this.analyzerService = analyzerService;
         this.isLoading = true;
         this.isOk = true;
+        this.showJoke = false;
+        this.showVideo = false;
     }
     MyAssistantComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -398,9 +400,30 @@ var MyAssistantComponent = /** @class */ (function () {
     MyAssistantComponent.prototype.processStatus = function (response) {
         switch (response.status) {
             case 'ok':
-                this.isLoading = true;
-                this.isOk = true;
+                this.helpHappyGuy();
                 break;
+            case 'sad':
+                this.helpSadGuy();
+                break;
+        }
+    };
+    MyAssistantComponent.prototype.helpHappyGuy = function () {
+        this.isLoading = false;
+        this.isOk = true;
+        this.showJoke = false;
+        this.showVideo = false;
+    };
+    MyAssistantComponent.prototype.helpSadGuy = function () {
+        this.isLoading = false;
+        this.isOk = false;
+        if (!this.showJoke) {
+            this.showJoke = true;
+            this.showVideo = false;
+            return;
+        }
+        if (this.showJoke) {
+            this.showJoke = false;
+            this.showVideo = true;
         }
     };
     MyAssistantComponent = __decorate([
@@ -704,7 +727,7 @@ var LoaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\r\n.typed-cursor {\r\n    display: none;\r\n}"
 
 /***/ }),
 
@@ -917,7 +940,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  video works!\n</p>\n"
+module.exports = "<iframe \n  width=\"100%\" height=\"315\" \n  src=\"https://www.youtube.com/embed/iYYRH4apXDo?autoplay=1\"\n  frameborder=\"0\"\n  allowfullscreen>\n</iframe>"
 
 /***/ }),
 
@@ -1056,7 +1079,7 @@ var AnalyzerService = /** @class */ (function () {
     AnalyzerService.prototype.sendImage = function (image) {
         var _this = this;
         var request = new _clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__["AnalyzeRequest"]();
-        request.imageContent = image;
+        request.imageContent = image.split(',')[1];
         this.analyzerClient.analyze(request).subscribe(function (x) {
             _this.statusEmitter.emit(x);
         });

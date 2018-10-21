@@ -11,6 +11,8 @@ export class MyAssistantComponent implements OnInit {
 
   isLoading = true;
   isOk = true;
+  showJoke = false;
+  showVideo = false;
 
   constructor(private analyzerService: AnalyzerService) { }
 
@@ -23,10 +25,34 @@ export class MyAssistantComponent implements OnInit {
   private processStatus(response: AnalyzeResponse) {
     switch (response.status) {
       case 'ok':
-        this.isLoading = true;
-        this.isOk = true;
+        this.helpHappyGuy();
+        break;
+      case 'sad':
+        this.helpSadGuy();
         break;
     }
   }
 
+  private helpHappyGuy() {
+    this.isLoading = false;
+    this.isOk = true;
+    this.showJoke = false;
+    this.showVideo = false;
+  }
+
+  private helpSadGuy() {
+    this.isLoading = false;
+    this.isOk = false;
+
+    if (!this.showJoke) {
+      this.showJoke = true;
+      this.showVideo = false;
+      return;
+    }
+
+    if (this.showJoke) {
+      this.showJoke = false;
+      this.showVideo = true;
+    }
+  }
 }
