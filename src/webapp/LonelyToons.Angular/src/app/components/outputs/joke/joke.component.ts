@@ -10,7 +10,7 @@ declare var Typed: any;
 export class JokeComponent implements OnInit {
 
   private jokes: string[] = [
-    'What is an astronaut\'s favorite place on a computer?                           <br/>The space bar.'
+    'What is an astronaut\'s favorite place on a computer?                <br/>The space bar.'
   ];
 
   constructor() { }

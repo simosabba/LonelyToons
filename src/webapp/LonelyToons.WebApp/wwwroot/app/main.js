@@ -766,7 +766,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var JokeComponent = /** @class */ (function () {
     function JokeComponent() {
         this.jokes = [
-            'What is an astronaut\'s favorite place on a computer?                           <br/>The space bar.'
+            'What is an astronaut\'s favorite place on a computer?                <br/>The space bar.'
         ];
     }
     JokeComponent.prototype.ngOnInit = function () {
@@ -940,7 +940,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<iframe \n  width=\"100%\" height=\"315\" \n  src=\"https://www.youtube.com/embed/iYYRH4apXDo?autoplay=1\"\n  frameborder=\"0\"\n  allowfullscreen>\n</iframe>"
+module.exports = "<iframe \n  width=\"100%\" height=\"315\" \n  src=\"https://www.youtube.com/embed/iYYRH4apXDo?&autoplay=1\"\n  frameborder=\"0\"\n  allowfullscreen>\n</iframe>"
 
 /***/ }),
 
