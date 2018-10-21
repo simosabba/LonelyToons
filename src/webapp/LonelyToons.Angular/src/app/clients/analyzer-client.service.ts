@@ -14,7 +14,7 @@ export class AnalyzerClientService {
   }
 
   analyze(request: AnalyzeRequest) {
-    return this.http.post<string>(this.getAddress('pic'), request.imageContent);
+    return this.http.post<AnalyzeResponse>(this.getAddress('pic'), request.imageContent);
   }
 
   private getAddress(path: string) {

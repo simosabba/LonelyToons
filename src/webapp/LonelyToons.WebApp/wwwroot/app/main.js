@@ -394,17 +394,17 @@ var MyAssistantComponent = /** @class */ (function () {
     MyAssistantComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.analyzerService.statusEmitter.subscribe(function (x) {
-            _this.processStatus(x);
+            _this.processStatus(x.status);
         });
     };
     MyAssistantComponent.prototype.processStatus = function (status) {
         switch (status.toLocaleLowerCase()) {
             case 'sad':
             case 'fear':
-                this.helpHappyGuy();
+                this.helpSadGuy();
                 break;
             default:
-                this.helpSadGuy();
+                this.helpHappyGuy();
                 break;
         }
     };
