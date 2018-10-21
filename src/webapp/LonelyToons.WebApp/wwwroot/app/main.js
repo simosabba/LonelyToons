@@ -71,7 +71,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n    background-image: url(/app/assets/img/background.jpg);\r\n    background-size: cover;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
+module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n    background-image: url(/app/assets/img/background-sm.jpg);\r\n    background-size: cover;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
 
 /***/ }),
 
@@ -950,7 +950,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4\">\n      <div class=\"card p-4 my-2\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n  </div>\n  <div class=\"row justify-content-center\">\n      <div class=\"col-6\">\n        <div class=\"card p-4 my-2\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container align-self-center\">\n  <div>\n    <h1 class=\"text-white text-center my-2 pt-2\">Hi!</h1>\n  </div>\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4\">\n      <div class=\"card p-4 my-4\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n  </div>\n  <div class=\"row justify-content-center\">\n      <div class=\"col-6\">\n        <div class=\"card p-4 my-4\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n    </div>\n</div>"
 
 /***/ }),
 
