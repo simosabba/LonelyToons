@@ -7,6 +7,7 @@ import { Injectable, Inject, EventEmitter } from '@angular/core';
 export class AnalyzerService {
 
   statusEmitter = new EventEmitter<AnalyzeResponse>();
+  statusEmitter2 = new EventEmitter<AnalyzeResponse>();
 
   constructor(private analyzerClient: AnalyzerClientService) {
   }
@@ -15,7 +16,8 @@ export class AnalyzerService {
     const request = new AnalyzeRequest();
     request.imageContent = (<string>image).substr('data:image/png;base64,'.length);
     this.analyzerClient.analyze(request).subscribe((x: AnalyzeResponse) => {
-      this.statusEmitter.emit(x);
+      this.statusEmitter.next(x);
+      this.statusEmitter2.next(x);
     });
   }
 

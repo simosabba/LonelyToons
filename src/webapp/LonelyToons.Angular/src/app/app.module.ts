@@ -15,6 +15,7 @@ import { KaraokeComponent } from './components/outputs/karaoke/karaoke.component
 import { MyAssistantComponent } from './components/controls/my-assistant/my-assistant.component';
 import { AssistantLoaderComponent } from './components/controls/assistant-loader/assistant-loader.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HumorChartComponent } from './components/outputs/humor-chart/humor-chart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     VideoComponent,
     KaraokeComponent,
     MyAssistantComponent,
-    AssistantLoaderComponent
+    AssistantLoaderComponent,
+    HumorChartComponent
   ],
   imports: [
     BrowserModule,

@@ -157,12 +157,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_controls_my_assistant_my_assistant_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/controls/my-assistant/my-assistant.component */ "./src/app/components/controls/my-assistant/my-assistant.component.ts");
 /* harmony import */ var _components_controls_assistant_loader_assistant_loader_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/controls/assistant-loader/assistant-loader.component */ "./src/app/components/controls/assistant-loader/assistant-loader.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _components_outputs_humor_chart_humor_chart_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/outputs/humor-chart/humor-chart.component */ "./src/app/components/outputs/humor-chart/humor-chart.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -196,7 +198,8 @@ var AppModule = /** @class */ (function () {
                 _components_outputs_video_video_component__WEBPACK_IMPORTED_MODULE_11__["VideoComponent"],
                 _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__["KaraokeComponent"],
                 _components_controls_my_assistant_my_assistant_component__WEBPACK_IMPORTED_MODULE_13__["MyAssistantComponent"],
-                _components_controls_assistant_loader_assistant_loader_component__WEBPACK_IMPORTED_MODULE_14__["AssistantLoaderComponent"]
+                _components_controls_assistant_loader_assistant_loader_component__WEBPACK_IMPORTED_MODULE_14__["AssistantLoaderComponent"],
+                _components_outputs_humor_chart_humor_chart_component__WEBPACK_IMPORTED_MODULE_16__["HumorChartComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -363,7 +366,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <div *ngIf=\"status === 'neutral'\">\n        <h2>You look ok!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n    <div *ngIf=\"status !== 'neutral'\">\n        <h2>You look good!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
+module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading\">\n    <div class=\"text-center mb-3\">\n      <h2>Mood: {{status}}</h2>\n        <div>Angry: {{score.Angry}}</div>\n        <div>Disgust: {{score.Disgust}}</div>\n        <div>Fear: {{score.Fear}}</div>\n        <div>Happy: {{score.Happy}}</div>\n        <div>Neutral: {{score.Neutral}}</div>\n        <div>Sad: {{score.Sad}}</div>\n        <div>Surprise: {{score.Surprise}}</div>\n    </div>\n    <hr>\n\n      <!-- <div class=\"container\">\n          <div class=\"row my-3\">\n              <div class=\"col\">\n                  <h4>Bootstrap 4 Chart.js</h4>\n              </div>\n          </div>\n          <div class=\"row py-2\">\n              <div class=\"col-md-4 py-1\">\n                  <div class=\"card\">\n                      <div class=\"card-body\">\n                          <canvas id=\"chDonut1\"></canvas>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div> -->\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <div *ngIf=\"status === 'neutral'\">\n        <h2>You look ok!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n    <div *ngIf=\"status !== 'neutral'\">\n        <h2>You look good!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -401,7 +404,9 @@ var MyAssistantComponent = /** @class */ (function () {
     MyAssistantComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.analyzerService.statusEmitter.subscribe(function (x) {
+            _this.score = x.score;
             _this.processStatus(x.status);
+            _this.drawChart(x);
         });
     };
     MyAssistantComponent.prototype.processStatus = function (status) {
@@ -434,6 +439,40 @@ var MyAssistantComponent = /** @class */ (function () {
             this.showJoke = false;
             this.showVideo = true;
         }
+    };
+    MyAssistantComponent.prototype.drawChart = function (data) {
+        console.log('refreshing chart');
+        var colors = ['#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545', '#6c757d'];
+        /* 3 donut charts */
+        var donutOptions = {
+            cutoutPercentage: 85,
+            legend: { position: 'bottom', padding: 5, labels: { pointStyle: 'circle', usePointStyle: true } }
+        };
+        // donut 1
+        var chDonutData1 = {
+            labels: ['Bootstrap', 'Popper', 'Other'],
+            datasets: [
+                {
+                    backgroundColor: colors.slice(0, 3),
+                    borderWidth: 0,
+                    data: [74, 11, 40]
+                }
+            ]
+        };
+        setTimeout(function () {
+            var chDonut1 = document.getElementById('chDonut1');
+            console.log(chDonut1);
+            console.log(chDonutData1);
+            console.log(donutOptions);
+            if (chDonut1) {
+                console.log('drawing');
+                var chart = new Chart(chDonut1, {
+                    type: 'pie',
+                    data: chDonutData1,
+                    options: donutOptions
+                });
+            }
+        }, 200);
     };
     MyAssistantComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -723,6 +762,142 @@ var LoaderComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], LoaderComponent);
     return LoaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/humor-chart/humor-chart.component.css":
+/*!**************************************************************************!*\
+  !*** ./src/app/components/outputs/humor-chart/humor-chart.component.css ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/humor-chart/humor-chart.component.html":
+/*!***************************************************************************!*\
+  !*** ./src/app/components/outputs/humor-chart/humor-chart.component.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <div class=\"row my-3\">\n        <div class=\"col\">\n            <h4>Bootstrap 4 Chart.js</h4>\n        </div>\n    </div>\n    <div class=\"row py-2\">\n        <div class=\"col-md-4 py-1\">\n            <div class=\"card\">\n                <div class=\"card-body\">\n                    <canvas id=\"chDonut1\"></canvas>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/outputs/humor-chart/humor-chart.component.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/outputs/humor-chart/humor-chart.component.ts ***!
+  \*************************************************************************/
+/*! exports provided: HumorChartComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HumorChartComponent", function() { return HumorChartComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_analyzer_analyzer_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/analyzer/analyzer.service */ "./src/app/services/analyzer/analyzer.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HumorChartComponent = /** @class */ (function () {
+    function HumorChartComponent(analyzerService) {
+        this.analyzerService = analyzerService;
+    }
+    HumorChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.analyzerService.statusEmitter2.subscribe(function (x) {
+            _this.drawChart(x);
+        });
+    };
+    HumorChartComponent.prototype.drawChart = function (data) {
+        console.log('refreshing chart');
+        var colors = ['#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545', '#6c757d'];
+        /* 3 donut charts */
+        var donutOptions = {
+            cutoutPercentage: 85,
+            legend: { position: 'bottom', padding: 5, labels: { pointStyle: 'circle', usePointStyle: true } }
+        };
+        // donut 1
+        var chDonutData1 = {
+            labels: ['Bootstrap', 'Popper', 'Other'],
+            datasets: [
+                {
+                    backgroundColor: colors.slice(0, 3),
+                    borderWidth: 0,
+                    data: [74, 11, 40]
+                }
+            ]
+        };
+        var chDonut1 = document.getElementById('chDonut1');
+        if (chDonut1) {
+            new Chart(chDonut1, {
+                type: 'pie',
+                data: chDonutData1,
+                options: donutOptions
+            });
+        }
+        // // donut 2
+        // const chDonutData2 = {
+        //     labels: ['Wips', 'Pops', 'Dags'],
+        //     datasets: [
+        //       {
+        //         backgroundColor: colors.slice(0,3),
+        //         borderWidth: 0,
+        //         data: [40, 45, 30]
+        //       }
+        //     ]
+        // };
+        // const chDonut2 = document.getElementById('chDonut2');
+        // if (chDonut2) {
+        //   new Chart(chDonut2, {
+        //       type: 'pie',
+        //       data: chDonutData2,
+        //       options: donutOptions
+        //   });
+        // }
+        // // donut 3
+        // var chDonutData3 = {
+        //     labels: ['Angular', 'React', 'Other'],
+        //     datasets: [
+        //       {
+        //         backgroundColor: colors.slice(0,3),
+        //         borderWidth: 0,
+        //         data: [21, 45, 55, 33]
+        //       }
+        //     ]
+        // };
+        // var chDonut3 = document.getElementById('chDonut3');
+        // if (chDonut3) {
+        //   new Chart(chDonut3, {
+        //       type: 'pie',
+        //       data: chDonutData3,
+        //       options: donutOptions
+        //   });
+        // }
+    };
+    HumorChartComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-humor-chart',
+            template: __webpack_require__(/*! ./humor-chart.component.html */ "./src/app/components/outputs/humor-chart/humor-chart.component.html"),
+            styles: [__webpack_require__(/*! ./humor-chart.component.css */ "./src/app/components/outputs/humor-chart/humor-chart.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_analyzer_analyzer_service__WEBPACK_IMPORTED_MODULE_1__["AnalyzerService"]])
+    ], HumorChartComponent);
+    return HumorChartComponent;
 }());
 
 
@@ -1084,13 +1259,15 @@ var AnalyzerService = /** @class */ (function () {
     function AnalyzerService(analyzerClient) {
         this.analyzerClient = analyzerClient;
         this.statusEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.statusEmitter2 = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     AnalyzerService.prototype.sendImage = function (image) {
         var _this = this;
         var request = new _clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__["AnalyzeRequest"]();
         request.imageContent = image.substr('data:image/png;base64,'.length);
         this.analyzerClient.analyze(request).subscribe(function (x) {
-            _this.statusEmitter.emit(x);
+            _this.statusEmitter.next(x);
+            _this.statusEmitter2.next(x);
         });
     };
     AnalyzerService = __decorate([

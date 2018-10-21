@@ -3,6 +3,36 @@
   <div [hidden]="isLoading === false">
       <app-assistant-loader></app-assistant-loader>
   </div>
+  <div *ngIf="!isLoading">
+    <div class="text-center mb-3">
+      <h2>Mood: {{status}}</h2>
+        <div>Angry: {{score.Angry}}</div>
+        <div>Disgust: {{score.Disgust}}</div>
+        <div>Fear: {{score.Fear}}</div>
+        <div>Happy: {{score.Happy}}</div>
+        <div>Neutral: {{score.Neutral}}</div>
+        <div>Sad: {{score.Sad}}</div>
+        <div>Surprise: {{score.Surprise}}</div>
+    </div>
+    <hr>
+
+      <!-- <div class="container">
+          <div class="row my-3">
+              <div class="col">
+                  <h4>Bootstrap 4 Chart.js</h4>
+              </div>
+          </div>
+          <div class="row py-2">
+              <div class="col-md-4 py-1">
+                  <div class="card">
+                      <div class="card-body">
+                          <canvas id="chDonut1"></canvas>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+  </div>
   <div *ngIf="!isLoading && isOk">
     <div *ngIf="status === 'neutral'">
         <h2>You look ok!</h2>
