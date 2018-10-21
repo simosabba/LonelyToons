@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { AnalyzerService } from '../../../services/analyzer/analyzer.service';
 
 @Component({
   selector: 'app-webcam',
@@ -8,20 +9,20 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 export class WebcamComponent implements OnInit, AfterViewInit {
 
   @ViewChild('video')
-  public video: ElementRef;
+  video: ElementRef;
 
   @ViewChild('canvas')
-  public canvas: ElementRef;
+  canvas: ElementRef;
 
-  public captures: Array<any>;
+  captures: Array<any>;
 
-  public constructor() {
+  constructor(private analyzerService: AnalyzerService) {
       this.captures = [];
   }
 
-  public ngOnInit() { }
+  ngOnInit() { }
 
-  public ngAfterViewInit() {
+  ngAfterViewInit() {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
               this.video.nativeElement.src = window.URL.createObjectURL(stream);
@@ -30,9 +31,12 @@ export class WebcamComponent implements OnInit, AfterViewInit {
       }
   }
 
-  public capture() {
+  capture() {
       const context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 640, 480);
-      this.captures.push(this.canvas.nativeElement.toDataURL('image/png'));
+      const image = this.canvas.nativeElement.toDataURL('image/png');
+
+      this.captures.push(image);
+      this.analyzerService.sendImage(image);
   }
 
 }

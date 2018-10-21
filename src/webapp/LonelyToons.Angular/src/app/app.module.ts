@@ -14,6 +14,7 @@ import { VideoComponent } from './components/outputs/video/video.component';
 import { KaraokeComponent } from './components/outputs/karaoke/karaoke.component';
 import { MyAssistantComponent } from './components/controls/my-assistant/my-assistant.component';
 import { AssistantLoaderComponent } from './components/controls/assistant-loader/assistant-loader.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AssistantLoaderComponent } from './components/controls/assistant-loader
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

@@ -156,12 +156,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_outputs_karaoke_karaoke_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/outputs/karaoke/karaoke.component */ "./src/app/components/outputs/karaoke/karaoke.component.ts");
 /* harmony import */ var _components_controls_my_assistant_my_assistant_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/controls/my-assistant/my-assistant.component */ "./src/app/components/controls/my-assistant/my-assistant.component.ts");
 /* harmony import */ var _components_controls_assistant_loader_assistant_loader_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/controls/assistant-loader/assistant-loader.component */ "./src/app/components/controls/assistant-loader/assistant-loader.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -198,6 +200,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"]
             ],
             providers: [],
@@ -205,6 +208,67 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/clients/analyzer-client.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/clients/analyzer-client.service.ts ***!
+  \****************************************************/
+/*! exports provided: AnalyzerClientService, AnalyzeRequest, AnalyzeResponse */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzerClientService", function() { return AnalyzerClientService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzeRequest", function() { return AnalyzeRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzeResponse", function() { return AnalyzeResponse; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AnalyzerClientService = /** @class */ (function () {
+    function AnalyzerClientService(http) {
+        this.http = http;
+        this.baseAddress = settings.endpoints.Analyzer;
+    }
+    AnalyzerClientService.prototype.analyze = function (request) {
+        return this.http.post(this.getAddress('analyze'), request);
+    };
+    AnalyzerClientService.prototype.getAddress = function (path) {
+        return this.baseAddress + path;
+    };
+    AnalyzerClientService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], AnalyzerClientService);
+    return AnalyzerClientService;
+}());
+
+var AnalyzeRequest = /** @class */ (function () {
+    function AnalyzeRequest() {
+    }
+    return AnalyzeRequest;
+}());
+
+var AnalyzeResponse = /** @class */ (function () {
+    function AnalyzeResponse() {
+    }
+    return AnalyzeResponse;
 }());
 
 
@@ -370,6 +434,7 @@ module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"10
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebcamComponent", function() { return WebcamComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_analyzer_analyzer_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/analyzer/analyzer.service */ "./src/app/services/analyzer/analyzer.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -380,8 +445,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var WebcamComponent = /** @class */ (function () {
-    function WebcamComponent() {
+    function WebcamComponent(analyzerService) {
+        this.analyzerService = analyzerService;
         this.captures = [];
     }
     WebcamComponent.prototype.ngOnInit = function () { };
@@ -396,7 +463,9 @@ var WebcamComponent = /** @class */ (function () {
     };
     WebcamComponent.prototype.capture = function () {
         var context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 640, 480);
-        this.captures.push(this.canvas.nativeElement.toDataURL('image/png'));
+        var image = this.canvas.nativeElement.toDataURL('image/png');
+        this.captures.push(image);
+        this.analyzerService.sendImage(image);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('video'),
@@ -412,7 +481,7 @@ var WebcamComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./webcam.component.html */ "./src/app/components/controls/webcam/webcam.component.html"),
             styles: [__webpack_require__(/*! ./webcam.component.css */ "./src/app/components/controls/webcam/webcam.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_analyzer_analyzer_service__WEBPACK_IMPORTED_MODULE_1__["AnalyzerService"]])
     ], WebcamComponent);
     return WebcamComponent;
 }());
@@ -920,6 +989,55 @@ var HomeComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], HomeComponent);
     return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/analyzer/analyzer.service.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/services/analyzer/analyzer.service.ts ***!
+  \*******************************************************/
+/*! exports provided: AnalyzerService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzerService", function() { return AnalyzerService; });
+/* harmony import */ var _clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../clients/analyzer-client.service */ "./src/app/clients/analyzer-client.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AnalyzerService = /** @class */ (function () {
+    function AnalyzerService(analyzerClient) {
+        this.analyzerClient = analyzerClient;
+        this.statusEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    AnalyzerService.prototype.sendImage = function (image) {
+        var _this = this;
+        var request = new _clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__["AnalyzeRequest"]();
+        request.imageContent = image;
+        this.analyzerClient.analyze(request).subscribe(function (x) {
+            _this.statusEmitter.emit(x);
+        });
+    };
+    AnalyzerService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__["AnalyzerClientService"]])
+    ], AnalyzerService);
+    return AnalyzerService;
 }());
 
 
