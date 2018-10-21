@@ -356,7 +356,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <app-assistant-loader></app-assistant-loader>\n</div>"
+module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    OK\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <app-joke></app-joke>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -371,6 +371,7 @@ module.exports = "\n<div>\n  <app-assistant-loader></app-assistant-loader>\n</di
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyAssistantComponent", function() { return MyAssistantComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_analyzer_analyzer_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../services/analyzer/analyzer.service */ "./src/app/services/analyzer/analyzer.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -381,10 +382,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var MyAssistantComponent = /** @class */ (function () {
-    function MyAssistantComponent() {
+    function MyAssistantComponent(analyzerService) {
+        this.analyzerService = analyzerService;
+        this.isLoading = true;
+        this.isOk = true;
     }
     MyAssistantComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.analyzerService.statusEmitter.subscribe(function (x) {
+            _this.processStatus(x);
+        });
+    };
+    MyAssistantComponent.prototype.processStatus = function (response) {
+        switch (response.status) {
+            case 'ok':
+                this.isLoading = true;
+                this.isOk = true;
+                break;
+        }
     };
     MyAssistantComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -392,7 +409,7 @@ var MyAssistantComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./my-assistant.component.html */ "./src/app/components/controls/my-assistant/my-assistant.component.html"),
             styles: [__webpack_require__(/*! ./my-assistant.component.css */ "./src/app/components/controls/my-assistant/my-assistant.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_analyzer_analyzer_service__WEBPACK_IMPORTED_MODULE_1__["AnalyzerService"]])
     ], MyAssistantComponent);
     return MyAssistantComponent;
 }());
@@ -698,7 +715,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  joke works!\n</p>\n"
+module.exports = "\n<div class=\"text-center\">\n  <div class=\"joke\"></div>\n</div>"
 
 /***/ }),
 
@@ -725,8 +742,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var JokeComponent = /** @class */ (function () {
     function JokeComponent() {
+        this.jokes = [
+            'What is an astronaut\'s favorite place on a computer?                           <br/>The space bar.'
+        ];
     }
     JokeComponent.prototype.ngOnInit = function () {
+        this.showJoke();
+    };
+    JokeComponent.prototype.showJoke = function () {
+        var typed = new Typed('.joke', {
+            strings: [this.getRandomJoke()],
+            typeSpeed: 40
+        });
+    };
+    JokeComponent.prototype.getRandomJoke = function () {
+        return this.jokes[Math.floor(Math.random() * this.jokes.length)];
     };
     JokeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -950,7 +980,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container align-self-center\">\n  <div>\n    <h1 class=\"text-white text-center my-2 pt-2\">Hi!</h1>\n  </div>\n  <div class=\"row justify-content-center\">\n    <div class=\"col-4\">\n      <div class=\"card p-4 my-4\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n  </div>\n  <div class=\"row justify-content-center\">\n      <div class=\"col-6\">\n        <div class=\"card p-4 my-4\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container align-self-center\">\n  <div>\n    <h1 class=\"text-white text-center my-2 pt-2\">Hi!</h1>\n  </div>\n  <div class=\"row justify-content-center\">\n    <div class=\"col-md-4 col-sm-10\">\n      <div class=\"card p-4 my-4\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n  </div>\n  <div class=\"row justify-content-center\">\n      <div class=\"col-md-6 col-sm-10\">\n        <div class=\"card p-4 my-4\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n    </div>\n</div>"
 
 /***/ }),
 

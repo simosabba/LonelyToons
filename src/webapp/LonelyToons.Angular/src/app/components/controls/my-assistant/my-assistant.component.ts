@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnalyzerService } from '../../../services/analyzer/analyzer.service';
+import { AnalyzeResponse } from '../../../clients/analyzer-client.service';
 
 @Component({
   selector: 'app-my-assistant',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAssistantComponent implements OnInit {
 
-  constructor() { }
+  isLoading = true;
+  isOk = true;
+
+  constructor(private analyzerService: AnalyzerService) { }
 
   ngOnInit() {
+    this.analyzerService.statusEmitter.subscribe((x: AnalyzeResponse) => {
+      this.processStatus(x);
+    });
+  }
+
+  private processStatus(response: AnalyzeResponse) {
+    switch (response.status) {
+      case 'ok':
+        this.isLoading = true;
+        this.isOk = true;
+        break;
+    }
   }
 
 }

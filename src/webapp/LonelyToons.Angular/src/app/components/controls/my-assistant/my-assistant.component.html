@@ -1,4 +1,12 @@
 
 <div>
-  <app-assistant-loader></app-assistant-loader>
+  <div [hidden]="isLoading === false">
+      <app-assistant-loader></app-assistant-loader>
+  </div>
+  <div *ngIf="!isLoading && isOk">
+    OK
+  </div>
+  <div *ngIf="!isLoading && !isOk">
+    <app-joke></app-joke>
+  </div>
 </div>
