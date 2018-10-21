@@ -218,7 +218,7 @@ var AppModule = /** @class */ (function () {
 /*!****************************************************!*\
   !*** ./src/app/clients/analyzer-client.service.ts ***!
   \****************************************************/
-/*! exports provided: AnalyzerClientService, AnalyzeRequest, AnalyzeResponse */
+/*! exports provided: AnalyzerClientService, AnalyzeRequest, AnalyzeResponse, StatusDict */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -226,6 +226,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzerClientService", function() { return AnalyzerClientService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzeRequest", function() { return AnalyzeRequest; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyzeResponse", function() { return AnalyzeResponse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatusDict", function() { return StatusDict; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -269,6 +270,12 @@ var AnalyzeResponse = /** @class */ (function () {
     function AnalyzeResponse() {
     }
     return AnalyzeResponse;
+}());
+
+var StatusDict = /** @class */ (function () {
+    function StatusDict() {
+    }
+    return StatusDict;
 }());
 
 

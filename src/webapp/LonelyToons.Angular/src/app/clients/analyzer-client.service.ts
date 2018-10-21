@@ -28,4 +28,15 @@ export class AnalyzeRequest {
 
 export class AnalyzeResponse {
   status: string;
+  score: StatusDict;
+}
+
+export class StatusDict {
+  Angry: string;
+  Disgust: string;
+  Fear: string;
+  Happy: string;
+  Neutral: string;
+  Sad: string;
+  Surprise: string;
 }
