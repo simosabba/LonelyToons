@@ -4,9 +4,11 @@
       <app-assistant-loader></app-assistant-loader>
   </div>
   <div *ngIf="!isLoading && isOk">
-    OK
+    <h2>You look good!</h2>
+    <img class="w-100" src="/app/assets/img/happy-astronaut.jpg">
   </div>
   <div *ngIf="!isLoading && !isOk">
+    <h2>You look bad..</h2>
     <app-joke *ngIf="showJoke"></app-joke>
     <app-video *ngIf="showVideo"></app-video>
   </div>

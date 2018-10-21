@@ -356,7 +356,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    OK\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
+module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <h2>You look good!</h2>\n    <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -399,10 +399,10 @@ var MyAssistantComponent = /** @class */ (function () {
     };
     MyAssistantComponent.prototype.processStatus = function (response) {
         switch (response.status) {
-            case 'ok':
+            case 'sad':
                 this.helpHappyGuy();
                 break;
-            case 'sad':
+            case 'ok':
                 this.helpSadGuy();
                 break;
         }

@@ -24,10 +24,10 @@ export class MyAssistantComponent implements OnInit {
 
   private processStatus(response: AnalyzeResponse) {
     switch (response.status) {
-      case 'ok':
+      case 'sad':
         this.helpHappyGuy();
         break;
-      case 'sad':
+      case 'ok':
         this.helpSadGuy();
         break;
     }
