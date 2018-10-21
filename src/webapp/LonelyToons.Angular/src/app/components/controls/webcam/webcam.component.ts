@@ -20,7 +20,11 @@ export class WebcamComponent implements OnInit, AfterViewInit {
       this.captures = [];
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+      setInterval (() => {
+        this.capture();
+      }, 5000);
+  }
 
   ngAfterViewInit() {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -32,11 +36,16 @@ export class WebcamComponent implements OnInit, AfterViewInit {
   }
 
   capture() {
-      const context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 640, 480);
-      const image = this.canvas.nativeElement.toDataURL('image/png');
 
-      this.captures.push(image);
-      this.analyzerService.sendImage(image);
+    if (this.analyzerService.isLoadingStatus() === true) {
+        return;
+    }
+
+    const context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 640, 480);
+    const image = this.canvas.nativeElement.toDataURL('image/png');
+
+    this.captures.push(image);
+    this.analyzerService.sendImage(image);
   }
 
 }

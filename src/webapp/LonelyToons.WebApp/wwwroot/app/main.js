@@ -507,7 +507,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"100%\" height=\"100%\" autoplay></video></div>\n  <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div>\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"640\" height=\"480\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div *ngFor=\"let c of captures\">\n          <img [src]=\"c\" height=\"50\" />\n      </div>\n  </div> -->\n</div>"
+module.exports = "<div id=\"app\">\n  <div><video #video id=\"video\" width=\"100%\" height=\"100%\" autoplay></video></div>\n  <!-- <div class=\"text-center\"><button class=\"btn\" id=\"snap\" (click)=\"capture()\">Snap Photo</button></div> -->\n  <canvas hidden class=\"my-2\" #canvas id=\"canvas\" width=\"640\" height=\"480\"></canvas>\n  <!-- <div class=\"pt-2\">\n      <div clas=\"row\" *ngFor=\"let c of captures\">\n          <div class=\"col-sm-2\">\n            <img [src]=\"c\" height=\"50\" />\n          </div>\n      </div>\n  </div> -->\n</div>"
 
 /***/ }),
 
@@ -539,7 +539,12 @@ var WebcamComponent = /** @class */ (function () {
         this.analyzerService = analyzerService;
         this.captures = [];
     }
-    WebcamComponent.prototype.ngOnInit = function () { };
+    WebcamComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setInterval(function () {
+            _this.capture();
+        }, 5000);
+    };
     WebcamComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -550,6 +555,9 @@ var WebcamComponent = /** @class */ (function () {
         }
     };
     WebcamComponent.prototype.capture = function () {
+        if (this.analyzerService.isLoadingStatus() === true) {
+            return;
+        }
         var context = this.canvas.nativeElement.getContext('2d').drawImage(this.video.nativeElement, 0, 0, 640, 480);
         var image = this.canvas.nativeElement.toDataURL('image/png');
         this.captures.push(image);
@@ -1258,17 +1266,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var AnalyzerService = /** @class */ (function () {
     function AnalyzerService(analyzerClient) {
         this.analyzerClient = analyzerClient;
+        this.isLoading = false;
         this.statusEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.statusEmitter2 = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     AnalyzerService.prototype.sendImage = function (image) {
         var _this = this;
+        this.isLoading = true;
         var request = new _clients_analyzer_client_service__WEBPACK_IMPORTED_MODULE_0__["AnalyzeRequest"]();
         request.imageContent = image.substr('data:image/png;base64,'.length);
         this.analyzerClient.analyze(request).subscribe(function (x) {
             _this.statusEmitter.next(x);
             _this.statusEmitter2.next(x);
+            _this.isLoading = false;
         });
+    };
+    AnalyzerService.prototype.isLoadingStatus = function () {
+        return this.isLoading;
     };
     AnalyzerService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
