@@ -24,7 +24,8 @@
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/lib/chartist/chartist.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -32,6 +33,7 @@
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
               "node_modules/typed.js/lib/typed.js",
               "node_modules/chart.js/dist/Chart.js",
+              "src/lib/chartist/chartist.min.js",
               "src/themes/main/js/theme.js"
             ]
           },

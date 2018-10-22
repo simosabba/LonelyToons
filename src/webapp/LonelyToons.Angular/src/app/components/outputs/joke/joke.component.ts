@@ -22,7 +22,7 @@ export class JokeComponent implements OnInit {
   showJoke() {
     const typed = new Typed('.joke', {
       strings: [this.getRandomJoke()],
-      typeSpeed: 40
+      typeSpeed: 30
     });
   }
 

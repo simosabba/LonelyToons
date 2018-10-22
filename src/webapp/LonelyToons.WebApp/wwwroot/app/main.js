@@ -71,7 +71,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100%;\r\n    background-image: url(/app/assets/img/background-sm.jpg);\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
+module.exports = "\r\n.page {\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n  }\r\n  \r\n  .content {\r\n    flex: 1 0 auto;\r\n    display: flex;\r\n    flex-direction: column;\r\n    background-image: url(/app/assets/img/background-sm.jpg);\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n  }\r\n  \r\n  .header {\r\n    flex: 0 1 auto;\r\n  }\r\n  \r\n  .footer {\r\n    flex-shrink: 0;\r\n  }\r\n  "
 
 /***/ }),
 
@@ -366,7 +366,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading\">\n    <div class=\"text-center mb-3\">\n      <h2>Mood: {{status}}</h2>\n        <div>Angry: {{score.Angry}}</div>\n        <div>Disgust: {{score.Disgust}}</div>\n        <div>Fear: {{score.Fear}}</div>\n        <div>Happy: {{score.Happy}}</div>\n        <div>Neutral: {{score.Neutral}}</div>\n        <div>Sad: {{score.Sad}}</div>\n        <div>Surprise: {{score.Surprise}}</div>\n    </div>\n    <hr>\n\n      <!-- <div class=\"container\">\n          <div class=\"row my-3\">\n              <div class=\"col\">\n                  <h4>Bootstrap 4 Chart.js</h4>\n              </div>\n          </div>\n          <div class=\"row py-2\">\n              <div class=\"col-md-4 py-1\">\n                  <div class=\"card\">\n                      <div class=\"card-body\">\n                          <canvas id=\"chDonut1\"></canvas>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div> -->\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <div *ngIf=\"status === 'neutral'\">\n        <h2>You look ok!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n    <div *ngIf=\"status !== 'neutral'\">\n        <h2>You look good!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
+module.exports = "\n<div>\n  <div [hidden]=\"isLoading === false\">\n      <app-assistant-loader></app-assistant-loader>\n  </div>\n  <div *ngIf=\"!isLoading\">\n    <!-- <div class=\"status-chart m-4\">\n\n    </div> -->\n    <div class=\"text-center mb-3\">\n      <h2>Mood: {{status}}</h2>\n        <div>Angry: {{score.Angry}}</div>\n        <div>Disgust: {{score.Disgust}}</div>\n        <div>Fear: {{score.Fear}}</div>\n        <div>Happy: {{score.Happy}}</div>\n        <div>Neutral: {{score.Neutral}}</div>\n        <div>Sad: {{score.Sad}}</div>\n        <div>Surprise: {{score.Surprise}}</div>\n    </div>\n    <hr>\n\n      <!-- <div class=\"container\">\n          <div class=\"row my-3\">\n              <div class=\"col\">\n                  <h4>Bootstrap 4 Chart.js</h4>\n              </div>\n          </div>\n          <div class=\"row py-2\">\n              <div class=\"col-md-4 py-1\">\n                  <div class=\"card\">\n                      <div class=\"card-body\">\n                          <canvas id=\"chDonut1\"></canvas>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div> -->\n  </div>\n  <div *ngIf=\"!isLoading && isOk\">\n    <div *ngIf=\"status === 'neutral'\">\n        <h2>You look ok!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n    <div *ngIf=\"status !== 'neutral'\">\n        <h2>You look good!</h2>\n        <img class=\"w-100\" src=\"/app/assets/img/happy-astronaut.jpg\">\n    </div>\n  </div>\n  <div *ngIf=\"!isLoading && !isOk\">\n    <h2>You look bad..</h2>\n    <app-joke *ngIf=\"showJoke\"></app-joke>\n    <app-video *ngIf=\"showVideo\"></app-video>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -406,7 +406,7 @@ var MyAssistantComponent = /** @class */ (function () {
         this.analyzerService.statusEmitter.subscribe(function (x) {
             _this.score = x.score;
             _this.processStatus(x.status);
-            _this.drawChart(x);
+            _this.drawPie(x);
         });
     };
     MyAssistantComponent.prototype.processStatus = function (status) {
@@ -414,6 +414,7 @@ var MyAssistantComponent = /** @class */ (function () {
         switch (status.toLocaleLowerCase()) {
             case 'sad':
             case 'fear':
+            case 'angry':
                 this.helpSadGuy();
                 break;
             default:
@@ -430,15 +431,54 @@ var MyAssistantComponent = /** @class */ (function () {
     MyAssistantComponent.prototype.helpSadGuy = function () {
         this.isLoading = false;
         this.isOk = false;
-        if (!this.showJoke) {
-            this.showJoke = true;
-            this.showVideo = false;
+        this.showJoke = true;
+        this.showVideo = false;
+        // if (!this.showJoke) {
+        //   this.showJoke = true;
+        //   this.showVideo = false;
+        //   return;
+        // }
+        // if (this.showJoke) {
+        //   this.showJoke = false;
+        //   this.showVideo = true;
+        // }
+    };
+    MyAssistantComponent.prototype.drawPie = function (chartData) {
+        if (!chartData) {
             return;
         }
-        if (this.showJoke) {
-            this.showJoke = false;
-            this.showVideo = true;
-        }
+        var data = {
+            labels: ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise'],
+            series: [
+                parseFloat(chartData.score.Angry) * 100,
+                parseFloat(chartData.score.Disgust) * 100,
+                parseFloat(chartData.score.Fear) * 100,
+                parseFloat(chartData.score.Happy) * 100,
+                parseFloat(chartData.score.Neutral) * 100,
+                parseFloat(chartData.score.Sad) * 100,
+                parseFloat(chartData.score.Surprise) * 100
+            ]
+        };
+        var options = {
+            labelInterpolationFnc: function (value) {
+                return value[0];
+            }
+        };
+        var responsiveOptions = [
+            ['screen and (min-width: 640px)', {
+                    chartPadding: 30,
+                    labelOffset: 100,
+                    labelDirection: 'explode',
+                    labelInterpolationFnc: function (value) {
+                        return value;
+                    }
+                }],
+            ['screen and (min-width: 1024px)', {
+                    labelOffset: 50,
+                    chartPadding: 10
+                }]
+        ];
+        new Chartist.Pie('.status-chart', data, options, responsiveOptions);
     };
     MyAssistantComponent.prototype.drawChart = function (data) {
         console.log('refreshing chart');
@@ -537,6 +577,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var WebcamComponent = /** @class */ (function () {
     function WebcamComponent(analyzerService) {
         this.analyzerService = analyzerService;
+        this.isStopped = false;
         this.captures = [];
     }
     WebcamComponent.prototype.ngOnInit = function () {
@@ -553,6 +594,12 @@ var WebcamComponent = /** @class */ (function () {
                 _this.video.nativeElement.play();
             });
         }
+    };
+    WebcamComponent.prototype.stop = function () {
+        this.isStopped = true;
+    };
+    WebcamComponent.prototype.start = function () {
+        this.isStopped = false;
     };
     WebcamComponent.prototype.capture = function () {
         if (this.analyzerService.isLoadingStatus() === true) {
@@ -967,7 +1014,7 @@ var JokeComponent = /** @class */ (function () {
     JokeComponent.prototype.showJoke = function () {
         var typed = new Typed('.joke', {
             strings: [this.getRandomJoke()],
-            typeSpeed: 40
+            typeSpeed: 30
         });
     };
     JokeComponent.prototype.getRandomJoke = function () {
@@ -1195,7 +1242,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container align-self-center\">\n  <div>\n    <h1 class=\"text-white text-center my-2 pt-2\">Hi!</h1>\n  </div>\n  <div class=\"row justify-content-center\">\n    <div class=\"col-md-4 col-sm-10\">\n      <div class=\"card p-4 my-4\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n  </div>\n  <div class=\"row justify-content-center\">\n      <div class=\"col-md-6 col-sm-10\">\n        <div class=\"card p-4 my-4\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container align-self-center\">\n  <div class=\"row justify-content-center\">\n    <div class=\"col-md-4 col-md-offset-1\">\n      <div class=\"card p-4 my-4\">\n        <app-webcam></app-webcam>\n      </div>\n    </div>\n    <div class=\"col-md-6 col-sm-10\">\n        <div class=\"card p-4 my-4\">\n          <app-my-assistant></app-my-assistant>\n        </div>\n      </div>\n  </div>\n</div>"
 
 /***/ }),
 

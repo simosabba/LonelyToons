@@ -8,6 +8,8 @@ import { AnalyzerService } from '../../../services/analyzer/analyzer.service';
 })
 export class WebcamComponent implements OnInit, AfterViewInit {
 
+  isStopped = false;
+
   @ViewChild('video')
   video: ElementRef;
 
@@ -33,6 +35,14 @@ export class WebcamComponent implements OnInit, AfterViewInit {
               this.video.nativeElement.play();
           });
       }
+  }
+
+  stop() {
+      this.isStopped = true;
+  }
+
+  start() {
+    this.isStopped = false;
   }
 
   capture() {
