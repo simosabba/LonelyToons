@@ -46,6 +46,7 @@
     <Folder Include="LonlyToonsML\" />
     <Folder Include="LonlyToonsML\FER2013_VGG19\" />
     <Folder Include="LonlyToonsML\images\" />
+    <Folder Include="LonlyToonsML\images\input\" />
     <Folder Include="LonlyToonsML\images\results\" />
     <Folder Include="LonlyToonsML\models\" />
     <Folder Include="LonlyToonsML\static\" />

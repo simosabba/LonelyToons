@@ -34,7 +34,7 @@ CORS(app)
 def emotion():
 
     img_data = request.data
-    img_name = str(uuid.uuid4()) + "imageToSave.png"
+    img_name = "LonlyToonsML/images/input" + str(uuid.uuid4()) + "imageToSave.png"
     with open(img_name, "wb") as fh:
         fh.write(base64.decodebytes(img_data))
 
@@ -108,17 +108,14 @@ def emotion():
     # show emojis
 
     #plt.show()
-    plt.savefig(os.path.join('LonlyToonsML/images/results/' + img_name))
+    #plt.savefig(os.path.join('LonlyToonsML/images/results/' + img_name))
     plt.close()
+
+    os.remove(img_name)
 
     ret = {}
     ret['status'] = class_names[predicted]
     ret['score'] = dict(zip(class_names, score.tolist()))
     return jsonify(ret)
-    #ret = "{ \"status\": \"" + class_names[predicted] + "\"," \
-    #+ "}"
-    #return  Response(response=ret,
-    #    status=200,
-    #    mimetype="application/json")
 
 import LonlyToonsML.views
