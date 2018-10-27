@@ -60,6 +60,7 @@
     <None Include="LonlyToonsML01 - Web Deploy.pubxml" />
     <Content Include="LonlyToonsML\FER2013_VGG19\PrivateTest_model.t7" />
     <Content Include="LonlyToonsML\web.config" />
+    <None Include="loonlyt-ml01 - Web Deploy.pubxml" />
     <Content Include="readme.txt" />
     <Content Include="requirements.txt" />
     <Content Include="LonlyToonsML\static\content\bootstrap.css" />
